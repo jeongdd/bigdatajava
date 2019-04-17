@@ -22,7 +22,25 @@ public class CalTest {
 			System.out.println("홀수");
 		}
 		
+		System.out.println("----삼항연산자로 출력");
+		
+		System.out.println(result2 == 0 ? "짝수" : "홀수");
+		
+		System.out.println();
+		
 //		while() //while은 무조건 논리형 / 무한 루프형
+		
+		//3.
+		int h = 4;
+		int m = 17;
+		int t = 25;
+		
+		System.out.println("[오늘과 관련된 내용입니다.]");
+		System.out.println("---------------------");
+		System.out.println("지금은 " + h + "시" + m + "분입니다.");
+		System.out.println("오늘의 기온은 " + t + "도 입니다.");
+		System.out.println("오늘은 정말 덥습니다.");
+		System.out.println("---------------------");
 		
 		
 		
