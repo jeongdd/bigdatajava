@@ -29,7 +29,7 @@ public class 수강신청 {
 				System.out.println("신청을 종료합니다.");
 				System.out.println("안녕히 가세요.");
 				break;
-			}else if(select[input] == 0 || select[input] <= select.length) {
+			}else if(input-1<select.length && select[input-1] != 1 ) {
 					select[input-1] = 1; //신청처리
 					System.out.println("신청 가능합니다.");
 					System.out.println("신청이 완료 되었습니다.");
