@@ -1,4 +1,4 @@
-package jdbc;
+package dto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-public class DBProcessing2 {
+public class SelectProcessing {
 	//멤버변수
 	Connection con;
 	PreparedStatement ps;
@@ -18,7 +18,7 @@ public class DBProcessing2 {
 	String password;
 	
 	
-	public String[] select(String id) throws Exception {
+	public String[] select(MemberDTO dto) throws Exception {
 //		1. 드라이버 설정
 		Class.forName("com.mysql.jdbc.Driver"); 
 		System.out.println("1. 드라이버 설정 OK...");
@@ -34,7 +34,7 @@ public class DBProcessing2 {
 		
 		String sql = "select * from member where id = ?";
 		ps = con.prepareStatement(sql);
-		ps.setString(1, id);
+		ps.setString(1, dto.getId() );
 
 		System.out.println("3. SQL문 선택 OK...");
 		
@@ -63,43 +63,9 @@ public class DBProcessing2 {
 		}
 		
 		return mem;
-		
-		
 	
 	}
-
-
 	
-	//멤버 메소드
-	public void insert(String id, String pw, String name, String tel) throws Exception {
-//		1. 드라이버 설정
-		Class.forName("com.mysql.jdbc.Driver"); 
-		System.out.println("1. 드라이버 설정 OK...");
-		
-//		2. DB연결(DB명, id, pw)
-		url = "jdbc:mysql://localhost:3306/bigdata";
-		user = "root";
-		password = "1234";
-		con = DriverManager.getConnection(url, user, password);
-		System.out.println("2. DB연결 OK...");
-		
-
-		
-		String sql = "insert into member valuse(?,?,?,?)";
-		ps = con.prepareStatement(sql);
-		System.out.println(sql);
-		ps.setString(1, id);
-		ps.setString(2, pw);
-		ps.setString(3, name);
-		ps.setString(4, tel);
-		System.out.println("3. SQL문 선택 OK...");
-		
-		
-//		4. SQL 전송
-		ps.executeUpdate(); 
-		System.out.println("4. SQL문 전송 OK...");
-	
-	}
 }
 
 
