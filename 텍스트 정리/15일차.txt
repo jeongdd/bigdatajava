@@ -1,0 +1,67 @@
+#
+1. swing에 접목시키기
+2. DAO/DTO의 개념 정확히 알기
+
+DB처리를 위한 class
+------------------------
+DAO (Data Access Object)
+- CRUD 중심의 처리가 구현
+- CUD(insert, update, delete) : void형 처리, exectpteUpdate()
+- R(select) : return(Result set)형 처리, exectueQuery(), 
+DTO (Data Transfer Object)
+- 전송할 데이터를 묶는 용도
+- 배열은 한계가 있음(데이터 타입 일치x)
+
+
+
+AWT --> Swing --> JavaFx
+1차 프로젝트
+--------------
+1. 사용자가 프로그램을 접하는 부분 
+User Interface(UI)
+GUI(Swing) ------- java 처리 ------- DBMS
+		          DAO,DTO
+GUI(Browser) ---- 웹 서버 ---- Java 처리 ---- DBMS
+		          	          DAO,DTO
+
+
+
+<Project #1>
+# member - 로그인, 회원가입, 회원정보
+로그인 - select
+회원가입 - create , select
+회원정보 - select, update, delete
+
+# spend - 지출입력, 조회화면(통계처리), 추천화면
+지출입력 - create, select, update, delete
+조회화면 - select
+추천화면 - select
+
+# income - 수입입력
+수입입력 - create , select, update, delete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
