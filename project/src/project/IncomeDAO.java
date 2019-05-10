@@ -15,8 +15,7 @@ public class IncomeDAO {
 	ResultSet rs;
 	static int num = 0;
 	
-	public void insertIncome(IncomeDTO dto) {
-		try {
+	public void insertIncome(IncomeDTO dto) throws Exception {
 			Class.forName("com.mysql.jdbc.Driver");
 			System.out.println("1. 드라이버 설정 ok!!");
 			
@@ -45,19 +44,6 @@ public class IncomeDAO {
 			
 			ps.executeUpdate();
 			System.out.println("전송 완료!");
-			
-			
-		} catch (Exception e) {
-			System.out.println("DB처리 중 에러 발생...");
-			System.out.println(e.getMessage());
-		} finally {
-			try {
-				ps.close();
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		} //end finally
 	}
 }
 

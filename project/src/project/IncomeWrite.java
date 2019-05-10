@@ -79,7 +79,11 @@ public class IncomeWrite {
 				dto.setCategory(category);
 				dto.setMemo(memo);
 				
-				dao.insertIncome(dto);
+				try {
+					dao.insertIncome(dto);
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 				
 				System.out.println("등록완료");
 			}

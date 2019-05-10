@@ -114,20 +114,37 @@ public class WalletMemDAO {
 		} catch (Exception e) { // 다 잡아버림 -> 모든 에러처리
 			System.out.println("DB처리 중 에러 발생...");
 			System.out.println(e.getMessage());
-		} finally {
-			// 에러 발생여부와 상관없이 무조건 실행해야 하는 코드 (강제성)
-			// 작은 범위부터 close해야함
-			try {
-				ps.close();
-				con.close();
-			} catch (SQLException e) {
-//				e.printStackTrace();
-				System.out.println("자원 해제 중 에러발생!!!");
-			} // catch
-		} // try-catch-finally
+		}
 		
+	} //end insert
+	
+	public boolean LoginCheck (String InputId, String InputPw) throws Exception {
+		MemberDTO dto = null;
 		
+		Class.forName("com.mysql.jdbc.Driver");
+		System.out.println("1. 드라이버 설정 ok!!");
+		
+		con = DriverManager.getConnection(url, user, password); 
+		System.out.println("2. DB연결 ok!!");
+		
+		String sql = "select * from member where id = ? and pw = ?";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, InputId);
+		ps.setString(2, InputPw);
+		
+		rs = ps.executeQuery();
+		
+		boolean check = false;
+		
+		if(rs.next()) {
+			check = true;
+		} else {
+			check = false;
+		}
+		
+		return check;
 	}
+	
 	
 }
 

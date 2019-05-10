@@ -6,8 +6,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 import java.awt.Font;
+import java.awt.HeadlessException;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -15,13 +18,13 @@ import java.awt.event.ActionEvent;
 
 public class Login {
 	private static JTextField IDText;
-	private static JTextField PwText;
 
 	public static void main(String[] args) {
 			
 		WalletMemDTO dto = null;
 		
 		JFrame f = new JFrame("Wallet Login");
+		f.getContentPane().setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 20));
 		JLabel img = new JLabel();
 		
 		f.setSize(589, 762);
@@ -32,32 +35,40 @@ public class Login {
 		f.getContentPane().add(IDL);
 		
 		IDText = new JTextField();
-		IDText.setFont(new Font("Dialog", Font.PLAIN, 24));
+		IDText.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 20));
 		f.getContentPane().add(IDText);
 		IDText.setColumns(10);
 		
-		JLabel PWText = new JLabel("PW");
-		PWText.setFont(new Font("Dialog", Font.PLAIN, 24));
-		f.getContentPane().add(PWText);
+		JLabel PWL = new JLabel("PW");
+		PWL.setFont(new Font("Dialog", Font.PLAIN, 24));
+		f.getContentPane().add(PWL);
 		
-		PwText = new JTextField();
-		PwText.setFont(new Font("Dialog", Font.PLAIN, 24));
+		JPasswordField PwText = new JPasswordField();
+		PwText.setFont(new Font("나눔고딕 ExtraBold", Font.PLAIN, 20));
 		PwText.setColumns(10);
+		
 		f.getContentPane().add(PwText);
 		
 		JButton login = new JButton("Login");
 		login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String InputID = IDText.getText();
+				WalletMemDAO dao = new WalletMemDAO();
+				
+				String InputId = IDText.getText();
 				String InputPw = PwText.getText();
-				if(InputID.equals("1")&& InputPw.equals("1")) {
-					SelectMenu menu = new SelectMenu();
-				}else {
-					JOptionPane.showMessageDialog(null, "※회원정보를 확인해주세요※", "회원정보 오류", JOptionPane.WARNING_MESSAGE);
+				try {
+					if(dao.LoginCheck(InputId, InputPw)) {
+						JOptionPane.showMessageDialog(null, "로그인 성공!");
+						SelectMenu menu = new SelectMenu();
+					}else {
+						JOptionPane.showMessageDialog(null, "※회원정보를 확인해주세요※", "회원정보 오류", JOptionPane.WARNING_MESSAGE);
+					} 
+				} catch (Exception e1) {
+					e1.printStackTrace();
 				}
 			}
 		});
-		login.setFont(new Font("Consolas", Font.PLAIN, 22));
+		login.setFont(new Font("Consolas", Font.PLAIN, 31));
 		f.getContentPane().add(login);
 		
 		JButton signup = new JButton("Sign Up");
@@ -67,7 +78,7 @@ public class Login {
 				
 			}
 		});
-		signup.setFont(new Font("Consolas", Font.PLAIN, 22));
+		signup.setFont(new Font("Consolas", Font.PLAIN, 31));
 		f.getContentPane().add(signup);
 		ImageIcon icon = new ImageIcon("wallet.PNG");
 		img.setIcon(icon);
@@ -82,7 +93,7 @@ public class Login {
 		f.setVisible(true);
 		
 		
-//		return dto;
+
 
 	}
 
