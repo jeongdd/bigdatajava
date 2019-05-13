@@ -1,0 +1,10 @@
+db명 : car
+테이블명 : carSale
+	 id, name, content, price
+CarDAO에 crud 기능 메소드 5개 정의
+CarDTO
+CarUser에 crud의 5개 기능 실행하는 입력/출력 기능
+답안지 : 빅데이터-이름-crud.docx
+	코드 + 실행화면 캡쳐
+프로젝트 압축 : 빅데이터-이름-crud.docx.zip
+
