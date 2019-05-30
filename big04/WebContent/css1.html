@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS1</title>
+		<!-- css를 바로 적용 시키고 싶을 때 head에 title 아래에 쓴다 -->
+		<style type="text/css">
+			/* 태그 전체의 속성 값 */
+			p {
+				color: #6193e2;
+				background: yellow; /* 배경색이나 배경 이미지 */
+			}
+			li{
+				color: #c16549;
+				font: console 10px bold /* 글자체,글씨색 등 */
+			}
+			/* 각각의 태그의 속성값 */
+			#li1{
+				background: salmon;
+			}
+			#li2{
+				background: green;
+			}
+			/* 다른 태그지만 속성값을 같게 하고싶을 때 */
+			.p1{ 
+				border: 5px dotted pink;
+			}
+		</style>
+	</head>
+	<body>
+		<p class="p1">나는 p태그</p>
+		<ul type="square">
+			<li id="li1">스타일 시트-1</li> <!-- 각각의 속성을 다르게 하기 위해서 id를 부여함  -->
+			<li id ="li2" class="p1">스타일시트-2</li> 
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>회원가입 화면</title>
+	</head>
+	<body>
+		<img src = "naver.PNG">
+		<form action="server.jsp"> <!-- action -> 입력값을 받아서 처리해주는 부분 -->
+			ID : <input type="text" name="id" placeholder="id는 다섯글자 이상"><br> <!-- 이름 지정이 중요함  -->
+
+				<select name="food">
+					<option value="ja">자장면</option>
+					<option value="wo">우동</option>
+					<option value="ham">햄버거</option>
+					<option value="piz" selected>피자</option> <!-- selected -> 맨위로 올라감 -->
+				</select><br>
+			GENDER : <input type="radio" name="gender" value="male">남자
+					 <input type="radio" name="gender" value="female">여자
+			<br>
+			HOBBY : <input type="checkbox" name="hobby" value="run">달리기
+					<input type="checkbox" name="hobby" value="music">음악
+					<input type="checkbox" name="hobby" value="book">독서
+					<input type="checkbox" name="hobby" value="mount">등산
+			<br>
+			하고싶은말 : <textarea rows="10" cols="20" placeholder="글을 쓰세요."> <!-- 텍스트 필드 안에 흐린글자 -->
+			</textarea><br>
+			<input type="submit" value="회원가입">
+						
+		</form>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS3</title>
+		<style type="text/css">
+			input[type = "text"]{
+				background: red;
+			}
+			input[type = "password"]{
+				background: green;
+			}
+			a:hover {
+				background: purple;
+				color: gold;
+			}
+			a:visited {
+				background: gold;
+				color: green;
+			}
+			div{
+				width: 300px;
+				height: 150px;
+				background: yellow;
+			}
+			div:hover {
+				width: 500px;
+				height: 200px;
+				background: pink;
+				transition: all 1.0s linear 0.3s; /* 0.5s 후에 1.5s의 속도로 바뀜 */
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			ㅇㅅㅇ 졸리다....너무 졸리다 ㅇㅅㅇ<br>
+			ㅇㅅㅇ 졸리다....너무 졸리다 ㅇㅅㅇ<br>
+			ㅇㅅㅇ 졸리다....너무 졸리다 ㅇㅅㅇ<br>
+			ㅇㅅㅇ 졸리다....너무 졸리다 ㅇㅅㅇ<br>
+			ㅇㅅㅇ 졸리다....너무 졸리다 ㅇㅅㅇ<br>
+		</div>
+		<br>
+		<!-- name->서버에서 받을 때 사용하기 위해  / id -> 속성 부여를 위해 -->
+		전화번호 : <input name="tel" type="text"><br>
+		비밀번호 : <input name="pw" type="password"><br>
+		<hr>
+		<a href="http://naver.com">네이버로</a>
+	</body>
+</html>
