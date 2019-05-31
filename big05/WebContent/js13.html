@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS13</title>
+		<script type="text/javascript">
+			function check(){
+				//alert("내가 호출")
+				//var data = document.querySelector("input")
+				var d1 = document.querySelector("#id");  // id라는 input node 선택(selector의 역할)
+				var d2 = document.querySelector("#pw");  // id라는 input node 선택(selector의 역할)
+				var d3 = document.querySelector("#name");  // id라는 input node 선택(selector의 역할)
+				var d4 = document.querySelector("#tel");  // id라는 input node 선택(selector의 역할)
+				//alert(data); // 출력값 : [object HTMLInputElement] -> node 가 넘어옴
+				var data2 = d1.value
+				var data3 = d2.value
+				var data4 = d3.value
+				var data5 = d4.value
+				if(data2.length >= 5){
+					location.href = "js.jsp?id=" + data2 + "&pw="+data3+ "&name="+data4+ "&tel="+data5;  
+				}else{
+					alert("다섯 글자 이하 입니다. 다시 입력해주세요.")
+					location.href = "js13.html";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h1>회원가입</h1>
+		아이디 : <input type="text" name="id" id="id"><br>
+		비밀번호 : <input type="text" name="pw" id="pw"><br>
+		이름 : <input type="text" name="name" id="name"><br>
+		전화번호 : <input type="text" name="tel" id="tel"><br>
+		<button type="button" onClick="check()">회원등록</button>
+	</body>
+</html>

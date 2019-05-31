@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>문제 2번</title>
+		<script type="text/javascript">
+			function submit(){
+				var d1 = document.querySelector("#title");
+				var d2 = document.querySelector("#content");
+				data1 = d1.value;
+				data2 = d2.value;
+				if(data2.length > 1 ){
+					location.href = "jsTest1.jsp?title="+ data1 + "&content="+ data2;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h2>게시판</h2>
+		<hr>
+		제목 : <input type="text" name="title" id="title"><br>
+		내용 : <input type="text" name="content" id="content"><br>
+		<button type="button" onClick="submit()">내용 등록</button>
+	</body>
+</html>

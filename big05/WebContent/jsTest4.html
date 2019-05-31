@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>문제 4번</title>
+		<script type="text/javascript">
+			var number = prompt("숫자를 입력하세요.");
+			var num = parseInt(number);
+			console.log("입력받은 값 : " + num);
+			function countS(){
+				if(document.getElementById("add")){
+					num++;
+					alert("+1 된 값은" + num + "입니다.");
+					console.log("증가 된 값 : " + num);
+				}
+			}
+			function countD(){
+				if(document.getElementById("dim")){
+					num--;
+					alert("-1 된 값은" + num + "입니다.");
+					console.log("감소 된 값 : " + num);
+				}
+			}
+			function countR(){
+				if(document.getElementById("reset")){
+					num = 0;
+					alert("초기화 : " + num);
+					console.log("초기화 된 값 : " + num);
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="증가" id="add" onClick="countS()">
+		<input type="button" value="감소" id="dim" onClick="countD()">
+		<input type="button" value="초기화" id="reset" onClick="countR()">
+		
+	</body>
+</html>
