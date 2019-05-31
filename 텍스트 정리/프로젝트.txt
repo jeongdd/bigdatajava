@@ -1,0 +1,9 @@
+<2차 project>
+mySQL- Workbench, Explorer
+	java script(jquery)
+	css, 부트스트랩
+	jsp, dbcp, open API
+----------------------------------------
+<3차 project>
+oracle - developer2000, myBatis
+클라우드(aws, ms-azure), 빅데이터
