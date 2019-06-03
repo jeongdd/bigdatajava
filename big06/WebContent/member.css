@@ -1,0 +1,19 @@
+@charset "UTF-8";
+.t1{
+	font-size: 25px;
+	font-weight: bold;
+	color: purple; 
+	background: salmon;
+}
+.t2{
+	font-size: 25px;
+	font-weight: bold;
+	color: black; 
+	background: white;
+}
+.t3{
+	font-size: 25px;
+	font-weight: bold;
+	color: green;
+	background: skyblue;
+}

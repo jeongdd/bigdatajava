@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+.p1{
+	text-align: center;
+	background: skyblue;
+	color: green;
+	font-weight: bold;
+	font-size: 20px;
+}
+.p2{
+	text-align: center;
+	background: pink;
+	color: purple;
+	font-weight: bold;
+	font-size: 20px;
+}
