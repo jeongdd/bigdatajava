@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>memberTest.html</title>
+	</head>
+	<body>
+		<form action="memberTest.jsp">
+			<h1>회원가입</h1>
+			<hr color="yellow" size="5">
+			ID : <input type="text" name="id"><br>
+			PW : <input type="text" name="pw"><br>
+			NAME : <input type="text" name="name"><br>
+			BIRTH : <input type="text" name="year" placeholder="년(4자)">
+					<select name="month">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+					</select>
+					<input type="text" name="day" placeholder="일"><br>
+			GENDER : <input type="radio" name="gender" value="male">남
+					 <input type="radio" name="gender" value="female">여<br>
+			EMAIL : <input type="text" name="email"><br>
+			TEL : <input type="text" name="tel"><br>
+			<input type="submit" value="서버로 전송">
+		</form>
+	</body>
+</html>
