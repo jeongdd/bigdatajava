@@ -4,11 +4,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Main Page</title>
+		<title>Insert title here</title>
 	</head>
 	<body>
-		<form action="boardList.jsp">
-			<input type="submit" value="게시판으로 이동">
-		</form>
+		<%
+			response.sendRedirect("http://www.naver.com");
+		%>
 	</body>
 </html>

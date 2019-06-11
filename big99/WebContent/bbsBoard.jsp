@@ -1,0 +1,35 @@
+<%@page import="bean.BbsDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>bbsBoard.jsp</title>
+		<link rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous">
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+			crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<jsp:useBean id="dto" class="bean.BbsDTO"></jsp:useBean>
+		<jsp:setProperty property="*" name="dto"/>
+		
+		<%
+			BbsDAO dao = new BbsDAO();
+			dao.insert(dto);
+		%>
+		<form action="bbsFind.html">
+		
+			<h2>등록완료!</h2>
+			<button type="submit" class="btn btn-info" >검색하기</button>
+		
+		</form>
+		
+		
+	</body>
+</html>
