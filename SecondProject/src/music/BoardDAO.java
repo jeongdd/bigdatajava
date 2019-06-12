@@ -3,6 +3,7 @@ package music;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 
 
@@ -18,28 +19,36 @@ public class BoardDAO {
 		mgr = DBConnectionMgr.getInstance();
 	}
 
-	public void insert(BoardDTO dto) throws Exception {
-		Connection con = mgr.getConnection();
-
-		String sql = "insert into board values(?,?,?,?,?)";
-		PreparedStatement ps = con.prepareStatement(sql);
+	public BoardDTO insert() {
 		
-		ps.setInt(1, num);
-		num++;
-		ps.setString(2, dto.getTitle());
-		ps.setString(3, dto.getId());
-		ps.setString(4, dto.getPass());
-		ps.setString(5, dto.getContent());
+		BoardDTO dto = new BoardDTO();
+		
+		try {
+			con = mgr.getConnection();
+			
+			String sql = "insert into board values(?,?,?,?,?)";
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, num);
+			num++;
+			ps.setString(2, dto.getTitle());
+			ps.setString(3, dto.getId());
+			ps.setString(4, dto.getPass());
+			ps.setString(5, dto.getContent());
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		ps.executeUpdate();
-
+		return dto;
 	}
 	
 	public void update(BoardDTO dto) throws Exception {
-		Connection con = mgr.getConnection();
+		con = mgr.getConnection();
 
 		String sql = "update board set title = ?, id = ?, pass = ?, content = ? where id = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
+		ps = con.prepareStatement(sql);
 		
 		ps.setString(1, dto.getTitle());
 		ps.setString(2, dto.getId());
@@ -52,10 +61,10 @@ public class BoardDAO {
 	
 	public void delete(BoardDTO dto) throws Exception {
 
-		Connection con = mgr.getConnection();
+		con = mgr.getConnection();
 
 		String sql = "delete from board where id = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
+		ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 
 		ps.executeUpdate();
@@ -63,15 +72,15 @@ public class BoardDAO {
 	
 	public BoardDTO select(BoardDTO dto) throws Exception {
 
-		Connection con = mgr.getConnection();
+		con = mgr.getConnection();
 
 		// 3단계 sql문 결정
 		String sql = "select * from bbs where id = ?";
-		PreparedStatement ps = con.prepareStatement(sql);
+		ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 
 		// 4단계 sql문 실행 요청
-		ResultSet rs = ps.executeQuery();
+		rs = ps.executeQuery();
 		BoardDTO dto2 = null;
 
 		while (rs.next()) {
@@ -87,6 +96,42 @@ public class BoardDAO {
 		}
 		return dto2;
 	}
+	
+	public ArrayList<BoardDTO> selectAll(){
+		
+		ArrayList list = new ArrayList();
+		BoardDTO dto = null;
+		
+		try {
+			con = mgr.getConnection();
+			
+			String sql = "select * from music";
+			ps = con.prepareStatement(sql);
+			
+			rs = ps.executeQuery();
+			
+			
+			while(rs.next()) {
+				dto = new BoardDTO();
+				int num = rs.getInt(1);
+				String title = rs.getString(2);
+				String id = rs.getString(3);
+				
+				dto.setNum(num);
+				dto.setTitle(title);
+				dto.setId(id);
+				
+				list.add(dto);
+				
+			} //while end
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	} // selectAll end
 	
 }
 

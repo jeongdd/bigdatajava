@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="music.BoardDTO"%>
+<%@page import="music.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,11 +16,28 @@
 			crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<jsp:useBean id="dto" class="music.BoardDTO"></jsp:useBean>
-		<jsp:setProperty property="*" name="dto"/>
 		<%
-			
+			BoardDAO dao = new BoardDAO();
+			ArrayList<BoardDTO> list = dao.selectAll();
 		%>
+			<center>
+				<table border="1" boardercolor="#dddddd" width="800">
+					<tr align="center">
+						<td width="80">N u m</td>
+						<td width="200">제     목</td>
+						<td width="100">아 이 디</td>
+					</tr>
+					<% for(int i = 0; i < list.size(); i++){
+						BoardDTO dto = list.get(i);
+					%>
+					<tr align="center">
+						<td><%= dto.getNum()%></td>
+						<td><a href=""><%= dto.getTitle() %></a></td>
+						<td><%= dto.getId() %></td>
+					</tr>
+					<% } %>
+				</table>
+			</center>
 	
 	
 		<form action="write.jsp">

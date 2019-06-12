@@ -1,5 +1,5 @@
-<%@page import="music.MemberDTO"%>
-<%@page import="music.MemberDAO"%>
+<%@page import="music.BoardDAO"%>
+<%@page import="music.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,11 +18,11 @@
 			crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<jsp:useBean id="dto" class="music.MemberDTO"></jsp:useBean>
+		<jsp:useBean id="dto" class="music.BoardDTO"></jsp:useBean>
 		<jsp:setProperty property="*" name="dto" />
 		<%
-			MemberDAO dao = new MemberDAO();
-			MemberDTO dto2 = dao.select(dto);
+			BoardDAO dao = new BoardDAO();
+			BoardDTO dto2 = dao.insert();
 		%>
 		<div id="top">
 			<div id="title"></div>
@@ -76,7 +76,7 @@
 					<tr>
 						<td>&nbsp;</td>
 						<td align="center"><b>제목</b></td>
-						<td><input type="text" size="85" maxlength="100"
+						<td><input name="title" type="text" size="85" maxlength="100"
 							placeholder="제목을 작성해주세요."></td>
 					</tr>
 					<tr height="2" bgcolor="#dddddd">
@@ -91,13 +91,13 @@
 					<tr>
 						<td>&nbsp;</td>
 						<td><b>비밀번호</b></td>
-						<td><input type="password" size="10" maxlength="4"
+						<td><input name="pass" type="password" size="10" maxlength="4"
 							placeholder="네 글자"></td>
 					</tr>
 					<tr>
 						<td>&nbsp;</td>
 						<td align="center"><b>내용</b></td>
-						<td><textarea name="memo" cols="85" rows="13"
+						<td><textarea name="content" cols="85" rows="13"
 								placeholder="내용을 작성해주세요."></textarea></td>
 						<td>&nbsp;</td>
 					</tr>

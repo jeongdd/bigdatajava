@@ -25,7 +25,7 @@ public class MemberDAO {
 
 		String sql = "insert into member values(?,?,?,?,?,?)";
 
-		PreparedStatement ps = con.prepareStatement(sql);
+		ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 		ps.setString(2, dto.getPw());
 		ps.setString(3, dto.getName());
@@ -35,45 +35,48 @@ public class MemberDAO {
 
 		ps.executeUpdate();
 
+
 	}
 
-	public void LoginCheck(String InputId, String InputPw) throws Exception {
+	public boolean LoginCheck(String InputId, String InputPw) {
+		MemberDTO dto = new MemberDTO();
+		boolean result = false;
 
-		MemberDTO dto = null;
+		try {
+			con = mgr.getConnection();
 
-		con = mgr.getConnection();
+			String sql = "select * from member where id = ? and pw = ?";
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getPw());
 
-		String sql = "select * from member where id = ? and pw = ?";
-		ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
 
-		ps.setString(1, InputId);
-		ps.setString(2, InputPw);
 
-		rs = ps.executeQuery();
+			if (rs.next()) {
+				result = true;
+			}
 
-		boolean check = false;
-
-		if (rs.next()) {
-			check = true;
-		} else {
-			check = false;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return result;
 
 	}
 
 	public MemberDTO select(MemberDTO dto) {
 
-		Connection con;
 		MemberDTO dto2 = null;
 		try {
 			con = mgr.getConnection();
 			// 3단계 sql문 결정
 			String sql = "select * from member where id = ?";
-			PreparedStatement ps = con.prepareStatement(sql);
+			ps = con.prepareStatement(sql);
 			ps.setString(1, dto.getId());
 
 			// 4단계 sql문 실행 요청
 			rs = ps.executeQuery();
+
 
 			while (rs.next()) {
 				dto2 = new MemberDTO();
@@ -97,22 +100,25 @@ public class MemberDAO {
 
 		return dto2;
 	}
+	
 
-	public ArrayList selectAll() throws Exception { // 회원정보 전체 검색
-
-		ArrayList list = new ArrayList();
+	// 제너릭 프로그래밍(객체생성시 타입 결정가능)
+	// 형변환이 필요없어 내부 처리속도 더 빠름.
+	
+	public ArrayList<MemberDTO> selectAll() throws Exception { // 회원정보 전체 검색
+		// => object로 형변환 x -> MemberDTO로 사용한다.
+		
+		ArrayList<MemberDTO> list = new ArrayList<MemberDTO>();
 		MemberDTO dto = null;
 
 		con = mgr.getConnection();
-
-		System.out.println("DB 연결 완료");
 
 		String sql = "select * from music";
 		ps = con.prepareStatement(sql);
 
 		rs = ps.executeQuery();
-		System.out.println("전송 완료");
-		System.out.println("--------------");
+		
+		
 
 		while (rs.next()) {
 			dto = new MemberDTO();
@@ -133,10 +139,6 @@ public class MemberDAO {
 			list.add(dto);
 
 		} // while end
-
-		rs.close();
-		ps.close();
-		con.close();
 
 		return list;
 
