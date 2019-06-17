@@ -5,18 +5,34 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.HttpSessionBindingListener;
+import javax.websocket.Session;
+
 import music.DBConnectionMgr;
 import music.MemberDTO;
+import sun.security.jca.GetInstance.Instance;
 
 public class MemberDAO {
 
+	private static MemberDAO instance;
+	
 	Connection con;
 	PreparedStatement ps;
 	ResultSet rs;
 	DBConnectionMgr mgr;
-
+	
+	
 	public MemberDAO() {
 		mgr = DBConnectionMgr.getInstance();
+	}
+	
+	public static MemberDAO getInstance() {
+		if(instance == null) {
+			instance = new MemberDAO();
+		}
+		return instance;
+		
 	}
 
 	public void insert(MemberDTO dto) throws Exception {
@@ -37,33 +53,40 @@ public class MemberDAO {
 
 
 	}
+	
 
+	
+	
 	public boolean LoginCheck(String InputId, String InputPw) {
-		MemberDTO dto = new MemberDTO();
+		MemberDTO dto = null;
 		boolean result = false;
-
+		
 		try {
 			con = mgr.getConnection();
 
 			String sql = "select * from member where id = ? and pw = ?";
 			ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getId());
-			ps.setString(2, dto.getPw());
+			ps.setString(1, InputId);
+			ps.setString(2, InputPw);
 
 			rs = ps.executeQuery();
-
-
-			if (rs.next()) {
+			
+			
+			if(rs.next()) {
 				result = true;
+			} else {
+				result = false;
 			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return result;
-
 	}
 
+	
+	
 	public MemberDTO select(MemberDTO dto) {
 
 		MemberDTO dto2 = null;
@@ -143,4 +166,6 @@ public class MemberDAO {
 		return list;
 
 	} // select end
+
+	
 }
