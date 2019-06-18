@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="music.BoardDTO"%>
-<%@page import="music.BoardDAO"%>
+<%@page import="bean.BoardDTO"%>
+<%@page import="bean.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

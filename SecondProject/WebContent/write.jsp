@@ -1,5 +1,5 @@
-<%@page import="music.BoardDAO"%>
-<%@page import="music.BoardDTO"%>
+<%@page import="bean.BoardDAO"%>
+<%@page import="bean.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 			crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<jsp:useBean id="dto" class="music.BoardDTO"></jsp:useBean>
+		<jsp:useBean id="dto" class="bean.BoardDTO"></jsp:useBean>
 		<jsp:setProperty property="*" name="dto" />
 		<%
 			BoardDAO dao = new BoardDAO();
