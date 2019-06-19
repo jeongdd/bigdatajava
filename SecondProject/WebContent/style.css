@@ -22,6 +22,12 @@
 	padding-bottom: 5px;
 	border: 1px solid black;
 }
+#info{
+	position: absolute;
+	left: 1175px;
+	width: 200px;
+	height: 100px;	
+}
 #login{
 	position: absolute;
 	left: 1175px;
@@ -55,6 +61,7 @@
 	width: 900px;
 	height: 400px;	
 }
+
 #album{
 	position: absolute;
 	width: 700px;

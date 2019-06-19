@@ -16,11 +16,17 @@
 			boolean result = dao.LoginCheck(InputId, InputPw);
 			
 			if(result == true){
-				session.setAttribute("sessionId", InputId);
-				response.sendRedirect("main.jsp");
+				session.setAttribute("InputId", InputId);
+		%>
+			<jsp:forward page="loginMain.jsp"></jsp:forward>
+			
+		<%
+				/* response.sendRedirect("loginMain.jsp"); */
 			} else if(result == false){
 				response.sendRedirect("login.jsp");
 			}
-		 %>
+			
+		%>	
+		 
 	</body>
 </html>

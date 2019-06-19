@@ -1,3 +1,4 @@
+<%@page import="bean.MemberDAO"%>
 <%@page import="bean.Mp3DTO"%>
 <%@page import="bean.Mp3DAO"%>
 <%@page import="java.io.Console"%>
@@ -21,13 +22,24 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#logout").click(function(){
+					
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<jsp:useBean id="dto" class="bean.Mp3DTO"></jsp:useBean>
+		<jsp:useBean id="dtoM" class="bean.MemberDTO"></jsp:useBean>
 		<jsp:setProperty property="*" name="dto"/>
 		<%
 			Mp3DAO dao = new Mp3DAO();
 			Mp3DTO dto2 = dao.select();
+			
+			MemberDAO daoM = new MemberDAO();
 			
 		%>
 		<div id = "top">
@@ -48,10 +60,9 @@
 						<td>
 							<img src = "img/Camel.png">
 						</td>
-						<td>
-							<form action="login.jsp">
-								<button type="submit" id = "loginbutton" class="btn btn-info">로그인</button>
-							</form>
+						<td width="150px">
+							<b><%=session.getAttribute("InputId") %></b>님<br>안녕하세요 :)
+							<button type="button" class="btn btn-dark">로그아웃</button>
 						</td>
 					</tr>
 				</table>

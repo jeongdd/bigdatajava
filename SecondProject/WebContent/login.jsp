@@ -24,7 +24,7 @@
 			<div id ="di1">
 				<img class="dimg" src="img/loginC.png">
 			</div>
-		<form action="login_check.jsp">
+		<form action="login_check.jsp" method="post">
 			<div id="di2">
 					<center>
 						<img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
