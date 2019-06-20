@@ -12,6 +12,19 @@
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("#logout").submit(function(){
+					$.ajax({
+						url:"logout.jsp",
+						success:function(){
+							alert("로그아웃 되었습니다.");
+						}
+					});
+					return false;
+				});
+			});
+		</script>
 	</head>
 	<body>
 		<div id = "top">
@@ -32,10 +45,22 @@
 						<td>
 							<img src = "img/Camel.png">
 						</td>
-						<td>
-							<form action="">
+						<td width="150px">
+							<%
+								Object userId = session.getAttribute("InputId");
+								if(userId != null){
+							%>
+							<b><%=session.getAttribute("InputId") %></b>님<br>안녕하세요 :)
+							
+							<form action="logout.jsp">
+								<button type="submit" id="logout" class="btn btn-dark">로그아웃</button>
+							</form>
+							
+							<%}else{%>
+							<form action="login.jsp">
 								<button type="submit" id = "loginbutton" class="btn btn-info">로그인</button>
 							</form>
+							<%} %>
 						</td>
 					</tr>
 				</table>

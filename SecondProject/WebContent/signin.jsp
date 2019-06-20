@@ -7,26 +7,20 @@
 		<title>회원가입</title>
 		<link rel="stylesheet" type="text/css" href="log.css">
 		<script type="text/javascript">
-			function checkValue()
-			{
-				var form = document.userInfo;
-				
-				if(!form.id.value){
-					alert("아이디를 입력하세요.");
+			$(function(){
+				$("#idbtn").click(function(){
+					var check = $(this).serialize();
+					$.ajax({
+						url:"MemberDAO.java",
+						data: check,
+						success: function(){
+						}
+					});
 					return false;
-				}
+					
+				});
 				
-				if(form.idDuplication.value != "idCheck"){
-					alret("아이디 중복체크를 해주세요.");
-					return false;
-				}
-				
-				if(!form.pw.value != form.pw){
-					return false;
-				}
-				
-			}
-			}
+			});
 		</script>
 	</head>
 	<body>
@@ -38,9 +32,8 @@
 					<tr>
 						<td class="sign1">아이디</td>
 						<td class="sign2">
-							<input type="text" name="id" maxlength="50" onkeydown="inputIdChk()">
-							<input type="button" value="중복확인" onClick="openIdChk()">
-							<input type="hidden" name="idDuplication" value="idUncheck">
+							<input type="text" name="id" maxlength="50">
+							<input type="button" id="idbtn" value="중복확인" onClick="openIdChk()">
 						</td>
 					</tr>
 					<tr>

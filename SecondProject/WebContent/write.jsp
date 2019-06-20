@@ -43,8 +43,16 @@
 							<img src = "img/Camel.png">
 						</td>
 						<td width="150px">
+							<%
+								Object userId = session.getAttribute("InputId");
+								if(userId != null){
+							%>
 							<b><%=session.getAttribute("InputId") %></b>님<br>안녕하세요 :)
 							<button type="button" class="btn btn-dark">로그아웃</button>
+							<%}else{%>
+							<form action="login.jsp">
+								<button type="submit" id = "loginbutton" class="btn btn-info">로그인</button>
+							<%} %>
 						</td>
 					</tr>
 				</table>

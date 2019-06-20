@@ -54,7 +54,7 @@ public class MemberDAO {
 
 	}
 	
-
+	
 	
 	
 	public boolean LoginCheck(String InputId, String InputPw) {
