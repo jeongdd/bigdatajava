@@ -1,6 +1,6 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="bean.BoardDTO"%>
-<%@page import="bean.BoardDAO"%>
+<%@page import="music.BoardDTO"%>
+<%@page import="music.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -27,12 +27,6 @@
 						}
 					});
 					return false;
-				});
-
-				$("#write").click(function(){
-					$.ajax({
-						url:"adminwrite.jsp"
-					})
 				});
 
 			});
@@ -121,14 +115,11 @@
 							}
 						%>
 					</table>
-					<%
-						Object admin = session.getAttribute("admin");
-						if(userId == admin){
-					%>
-					<form action="write.jsp">
+					
+					<form action="adminwrite.jsp">
 						<button type="submit" id="write" class="btn btn-secondary">글 쓰기</button>
 					</form>
-					<%} %>
+					
 				</center>
 		
 		

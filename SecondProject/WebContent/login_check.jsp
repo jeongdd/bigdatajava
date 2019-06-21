@@ -1,5 +1,5 @@
 <%@page import="javax.swing.JOptionPane"%>
-<%@page import="bean.MemberDAO"%>
+<%@page import="music.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -22,10 +22,10 @@
 		%>
 			
 		<%
-				/* response.sendRedirect("loginMain.jsp"); */
 			} else if(result == false){
-				out.println("<script>alert('회원정보를 확인해주세요!');</script>");
-				response.sendRedirect("login.jsp");
+				out.write("<script>alert('회원정보를 확인해주세요!');</script>");
+				out.write("<script>history.go(-1);</script>");
+				
 			}
 			
 		%>	

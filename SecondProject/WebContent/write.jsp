@@ -1,5 +1,5 @@
-<%@page import="bean.BoardDAO"%>
-<%@page import="bean.BoardDTO"%>
+<%@page import="music.BoardDAO"%>
+<%@page import="music.BoardDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
 			crossorigin="anonymous"></script>
 	</head>
 <body>
-	<jsp:useBean id="dto" class="bean.BoardDTO"></jsp:useBean>
+	<jsp:useBean id="dto" class="music.BoardDTO"></jsp:useBean>
 	<jsp:setProperty property="*" name="dto" />
 	<%
 		BoardDAO dao = new BoardDAO();
@@ -53,6 +53,7 @@
 							<form action="login.jsp">
 								<button type="submit" id = "loginbutton" class="btn btn-info">로그인</button>
 							<%} %>
+							</form>
 						</td>
 					</tr>
 				</table>
@@ -97,12 +98,7 @@
 						<td><%=session.getAttribute("InputId")%></td>
 
 					</tr>
-					<tr>
-						<td>&nbsp;</td>
-						<td><b>비밀번호</b></td>
-						<td><input name="pass" type="password" size="10"
-							maxlength="4" placeholder="네 글자"></td>
-					</tr>
+					
 					<tr>
 						<td>&nbsp;</td>
 						<td align="center"><b>내용</b></td>

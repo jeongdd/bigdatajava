@@ -1,13 +1,12 @@
 package music;
 
-public class Mp3DTO {
-	private int num;
-	private String title;
-	private String artist;
-	private String date;
-	private String genre;
-	private int view;
-	private String img;
+public class MusicDTO {
+	private int num; // 음원번호 primary key, auto_increment
+	private String title; // 제목
+	private String artist; // 가수
+	private String date; // 발매일
+	private String genre; // 장르
+	private int views; // 조회수(스트리밍수)
 	
 	public int getNum() {
 		return num;
@@ -39,17 +38,11 @@ public class Mp3DTO {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public int getView() {
-		return view;
+	public int getViews() {
+		return views;
 	}
-	public void setView(int view) {
-		this.view = view;
-	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
+	public void setViews(int views) {
+		this.views = views;
 	}
 	
 	

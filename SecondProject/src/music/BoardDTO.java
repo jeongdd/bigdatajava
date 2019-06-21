@@ -4,10 +4,8 @@ public class BoardDTO {
 	private int num;
 	private String title;
 	private String id;
-	private String pass;
 	private String content;
-	
-	
+	private String date;
 	public int getNum() {
 		return num;
 	}
@@ -26,17 +24,17 @@ public class BoardDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getPass() {
-		return pass;
-	}
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 	
 	

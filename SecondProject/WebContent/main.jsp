@@ -1,5 +1,5 @@
-<%@page import="bean.Mp3DTO"%>
-<%@page import="bean.Mp3DAO"%>
+<%@page import="music.Mp3DTO"%>
+<%@page import="music.Mp3DAO"%>
 <%@page import="java.io.Console"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.jsoup.Jsoup"%>
@@ -36,7 +36,7 @@
 		</script>
 	</head>
 	<body>
-		<jsp:useBean id="dto" class="bean.Mp3DTO"></jsp:useBean>
+		<jsp:useBean id="dto" class="music.Mp3DTO"></jsp:useBean>
 		<jsp:setProperty property="*" name="dto"/>
 		<%
 			Mp3DAO dao = new Mp3DAO();

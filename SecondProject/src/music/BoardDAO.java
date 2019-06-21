@@ -33,7 +33,6 @@ public class BoardDAO {
 			num++;
 			ps.setString(2, dto.getTitle());
 			ps.setString(3, dto.getId());
-			ps.setString(4, dto.getPass());
 			ps.setString(5, dto.getContent());
 			
 			ps.executeUpdate();
@@ -52,7 +51,6 @@ public class BoardDAO {
 		
 		ps.setString(1, dto.getTitle());
 		ps.setString(2, dto.getId());
-		ps.setString(3, dto.getPass());
 		ps.setString(4, dto.getContent());
 		ps.setString(5, dto.getId());
 		
@@ -74,12 +72,10 @@ public class BoardDAO {
 
 		con = mgr.getConnection();
 
-		// 3단계 sql문 결정
 		String sql = "select * from bbs where id = ?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 
-		// 4단계 sql문 실행 요청
 		rs = ps.executeQuery();
 		BoardDTO dto2 = null;
 
@@ -126,7 +122,6 @@ public class BoardDAO {
 			} //while end
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
