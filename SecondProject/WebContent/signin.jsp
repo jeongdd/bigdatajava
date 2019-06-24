@@ -6,39 +6,63 @@
 		<meta charset="UTF-8">
 		<title>회원가입</title>
 		<link rel="stylesheet" type="text/css" href="log.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript">
-			$(function(){
-				$("#idbtn").click(function(){
-					var check = $(this).serialize();
-					$.ajax({
-						url:"MemberDAO.java",
-						data: check,
-						success: function(){
+			$("#idchk").click(function(){
+				var d = $("#f").serialize();
+				$.ajax({
+					url: "id_check.jsp",
+					data: d,
+					success: function(result){
+						var data = result.trim();
+						alert("ajax성공");
+						alert(data);
+						if(data == "YES"){
+							alert("사용가능한 ID입니다.");
+							return false;
+						}else if(data == "NO"){
+							alert("중복된 ID입니다. 다시 입력해주세요!");
+							return false;
 						}
-					});
-					return false;
-					
+					}
 				});
-				
 			});
+			function passchk(){ //비밀번호 체크
+				var pw1 = document.querySelector('#pw1');
+				var pw2 = document.querySelector('#pw2');
+				if (pw1.value.length < 6 || pw1.value == null) {
+					alert("비밀번호를 6자 이상 입력하세요!");
+					pw1.focus();
+				} else if (pw1.value != pw2.value) {
+					alert("비밀번호가 일치하지 않습니다.")
+				} 
+			}
+			
 		</script>
+		
 	</head>
 	<body>
 		<center>
 			<h1>회원가입</h1>
 			<hr color="pink" size="5">
-			<form action="SignIn.jsp">
+			<form action="SignIn.jsp" name="f">
 				<table border="0" class="sign1">
 					<tr>
 						<td class="sign1">아이디</td>
 						<td class="sign2">
-							<input type="text" name="id" maxlength="50">
-							<input type="button" id="idbtn" value="중복확인" onClick="openIdChk()">
+							<input type="text" id="id" name="id" maxlength="50">
+							<input type="button" id="idchk" value="중복확인">
 						</td>
 					</tr>
 					<tr>
 						<td >비밀번호</td>
-						<td><input type="text" name="pw"></td>
+						<td><input type="password" id="pw1" name="pw1" placeholder="6자 이상 "></td>
+					</tr>
+					<tr></tr>
+					<tr>
+						<td >비밀번호 확인</td>
+						<td><input type="password" size="15" maxlength="20" id="pw2" name="pass2" onblur="passchk()">&nbsp;
+   						</td>
 					</tr>
 					<tr>
 						<td>이름</td>
@@ -54,31 +78,31 @@
 					<tr>
 						<td>생년월일</td>
 						<td>
-							<input type="text" name="birthY" maxlength="4" placeholder="년(4자)" size="6">
+							<select name="birthY">
+								<%for(int i = 2019; i > 1900; i--){%>
+									<option value="<%=i %>"><%=i%></option>
+								<%}%>
+							</select> 년 &nbsp;
+
 							<select name="birthM" >
-								<option value="">월</option>
-								<option value="01">1월</option>
-								<option value="02">2월</option>
-								<option value="03">3월</option>
-								<option value="04">4월</option>
-								<option value="05">5월</option>
-								<option value="06">6월</option>
-								<option value="07">7월</option>
-								<option value="08">8월</option>
-								<option value="09">9월</option>
-								<option value="10">10월</option>
-								<option value="11">11월</option>
-								<option value="12">12월</option>
-							</select>
-							<input type="text" name="birthD" maxlength="2" placeholder="일" size="4">
+								<%for(int i = 1; i <= 12; i++){%>
+									<option value="<%= i %>"><%= i %></option>
+								<%}%>
+							</select> 월 &nbsp;
+
+							<select name="birthD">
+								<%for(int i = 1; i <= 31; i++){%>
+									<option value="<%= i %>"><%= i %></option>
+								<%}%>
+							</select> 일&nbsp;
 						</td>
 					</tr>
 					<tr>
 						<td>이메일</td>
 						<td>
-							<input type="text" name="emali" maxlength="50">&nbsp;@
-							<select name="Eadd">
-								<option>이메일 선택</option>
+							<input type="text" name="eId" maxlength="50">&nbsp;@
+							<select name="eAdd">
+								<option selected>이메일 선택</option>
 								<option>naver.com</option>
 								<option>daum.net</option>
 								<option>gmail.com</option>

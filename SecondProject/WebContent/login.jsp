@@ -18,12 +18,12 @@
 <body>
 	<div id="top">
 		<div id = "title">
-			<a href="main.jsp"><img src="img/Title.png" style="border-radius: 10px 10px 10px 10px"></a>
+			<a href="main.jsp"><img src="images/Title.png" style="border-radius: 10px 10px 10px 10px"></a>
 		</div>
 
 	<div id="contain">
 		<div id="di1">
-			<img class="dimg" src="img/loginC.png">
+			<img class="dimg" src="images/loginC.png">
 		</div>
 		<form action="login_check.jsp" method="post">
 			<div id="di2">
@@ -33,10 +33,10 @@
 				<span id="reauth-email" class="reauth-email"></span> 
 				<input type="text" name="id" id="inputId" class="form-control" placeholder="ID" required autofocus> 
 				<input type="password" name="pw" id="inputPassword" class="form-control" placeholder="Password" required>
-				<div></div>
+				<br>
 				<input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="Login">
 		</form>
-		<div></div>
+		<br>
 		<form action="signin.jsp">
 			<input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="SignIn">
 		</form>
@@ -44,4 +44,5 @@
 	</div>
 	</div>
 </body>
+</head>
 </html>
