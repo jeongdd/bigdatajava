@@ -41,6 +41,7 @@
 			<input class="btn btn-lg btn-primary btn-block btn-signin" type="submit" value="SignIn">
 		</form>
 			</center>
+			</div>
 	</div>
 	</div>
 </body>

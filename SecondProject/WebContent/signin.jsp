@@ -2,98 +2,100 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>회원가입</title>
-		<link rel="stylesheet" type="text/css" href="log.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script type="text/javascript">
-			$("#idchk").click(function(){
-				var d = $("#f").serialize();
+
+<head>
+	<meta charset="UTF-8">
+	<title>회원가입</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			$("#idchk").click(function () {
 				$.ajax({
 					url: "id_check.jsp",
-					data: d,
-					success: function(result){
-						var data = result.trim();
-						alert("ajax성공");
-						alert(data);
-						if(data == "YES"){
-							alert("사용가능한 ID입니다.");
-							return false;
-						}else if(data == "NO"){
-							alert("중복된 ID입니다. 다시 입력해주세요!");
-							return false;
+					data: {
+						"id": $("#id").val()
+					},
+					dataType: "text",
+					success: function (result) {
+						if ($.trim(result) == "YES") {
+							alert("사용 가능한 ID입니다.");
+						} else{
+							alert("중복된 ID입니다.");
 						}
 					}
 				});
 			});
-			function passchk(){ //비밀번호 체크
-				var pw1 = document.querySelector('#pw1');
-				var pw2 = document.querySelector('#pw2');
-				if (pw1.value.length < 6 || pw1.value == null) {
-					alert("비밀번호를 6자 이상 입력하세요!");
-					pw1.focus();
-				} else if (pw1.value != pw2.value) {
-					alert("비밀번호가 일치하지 않습니다.")
-				} 
+		});
+
+		function passchk() { //비밀번호 체크
+			var pw1 = document.querySelector('#pw1');
+			var pw2 = document.querySelector('#pw2');
+			if (pw1.value.length < 6 || pw1.value == null) {
+				alert("비밀번호를 6자 이상 입력하세요!");
+				pw1.focus();
+			} else if (pw1.value != pw2.value) {
+				alert("비밀번호가 일치하지 않습니다.")
 			}
-			
-		</script>
-		
-	</head>
-	<body>
-		<center>
-			<h1>회원가입</h1>
-			<hr color="pink" size="5">
-			<form action="SignIn.jsp" name="f">
-				<table border="0" class="sign1">
-					<tr>
-						<td class="sign1">아이디</td>
-						<td class="sign2">
-							<input type="text" id="id" name="id" maxlength="50">
-							<input type="button" id="idchk" value="중복확인">
-						</td>
-					</tr>
-					<tr>
-						<td >비밀번호</td>
-						<td><input type="password" id="pw1" name="pw1" placeholder="6자 이상 "></td>
-					</tr>
-					<tr></tr>
-					<tr>
-						<td >비밀번호 확인</td>
-						<td><input type="password" size="15" maxlength="20" id="pw2" name="pass2" onblur="passchk()">&nbsp;
-   						</td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td><input type="text" name="name" placeholder="이름을 입력하세요."></td>
-					</tr>
-					<tr>
-						<td>성별</td>
-						<td>
-							<input type="radio" name="gender" value="female" checked>여자
-							<input type="radio" name="gender" value="male" >남자
-						</td>
-					</tr>
-					<tr>
-						<td>생년월일</td>
-						<td>
-							<select name="birthY">
-								<%for(int i = 2019; i > 1900; i--){%>
-									<option value="<%=i %>"><%=i%></option>
-								<%}%>
+		}
+
+	</script>
+
+</head>
+
+<body>
+	<center>
+		<h1>[회원가입]</h1>
+		<hr color="pink" size="5">
+		<form action="insert.jsp" name="f" method="POST">
+			<table border="0" width = "800">
+				<tr height = "40">
+					<td>아이디</td>
+					<td>
+						<input type="text" id="id" name="id" maxlength="50">
+						<input type="button" id="idchk" value="중복확인">
+					</td>
+				</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td><input type="password" id="pw1" name="pw1" placeholder="6자 이상 "></td>
+				</tr>
+				<tr></tr>
+				<tr>
+					<td>비밀번호 확인</td>
+					<td><input type="password" size="15" maxlength="20" id="pw2" name="pass2" onblur="passchk()">&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name" placeholder="이름을 입력하세요."></td>
+				</tr>
+				<tr>
+					<td>성별</td>
+					<td>
+						<input type="radio" name="gender" value="female" checked>여자
+						<input type="radio" name="gender" value="male">남자
+					</td>
+				</tr>
+				<tr>
+					<td>생년월일</td>
+					<td>
+						<select name="birthY">
+							<%for(int i = 2019; i > 1900; i--){%>
+							<option value="<%= i %>"><%=i%></option>
+							<%}%>
 							</select> 년 &nbsp;
 
 							<select name="birthM" >
 								<%for(int i = 1; i <= 12; i++){%>
-									<option value="<%= i %>"><%= i %></option>
-								<%}%>
+							<option value="<%= i %>"><%= i %></option>
+							<%}%>
 							</select> 월 &nbsp;
 
 							<select name="birthD">
 								<%for(int i = 1; i <= 31; i++){%>
-									<option value="<%= i %>"><%= i %></option>
-								<%}%>
+							<option value="<%= i %>"><%= i %></option>
+							<%}%>
+							
 							</select> 일&nbsp;
 						</td>
 					</tr>
