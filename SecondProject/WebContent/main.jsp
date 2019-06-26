@@ -45,7 +45,7 @@
 		%>
 		<div id = "top">
 			<div id = "title">
-				<a href="main.jsp"><img src="img/Title.png" style="border-radius: 10px 10px 10px 10px"></a>
+				<a href="main.jsp"><img src="images/Title.png" style="border-radius: 10px 10px 10px 10px"></a>
 			</div>
 			
 			<div id = "search">
@@ -59,7 +59,7 @@
 				<table>
 					<tr>
 						<td>
-							<img src = "img/Camel.png">
+							<img src = "images/Camel.png">
 						</td>
 						<td width="150px">
 							<%
@@ -100,16 +100,16 @@
 					<a href="newmusic.jsp">
 						<table id="table">
 							<tr>
-								<td><img src="img/music.png" alt="" width="170px" height="170px"></td>
-								<td><img src="img/music2.png" alt="" width="170px" height="170px"></td>
-								<td><img src="img/music3.png" alt="" width="170px" height="170px"></td>
-								<td><img src="img/music4.png" alt="" width="170px" height="170px"></td>
+								<td><img src="images/music.png" alt="" width="170px" height="170px"></td>
+								<td><img src="images/music2.png" alt="" width="170px" height="170px"></td>
+								<td><img src="images/music3.png" alt="" width="170px" height="170px"></td>
+								<td><img src="images/music4.png" alt="" width="170px" height="170px"></td>
 							</tr>
 							<tr>
-								<td><img src="img/music5.png" alt="" width="170px" height="170px"></td>
-								<td><img src="img/music6.png" alt="" width="170px" height="170px"></td>
-								<td><img src="img/music7.png" alt="" width="170px" height="170px"></td>
-								<td><img src="img/music8.png" alt="" width="170px" height="170px"></td>
+								<td><img src="images/music5.png" alt="" width="170px" height="170px"></td>
+								<td><img src="images/music6.png" alt="" width="170px" height="170px"></td>
+								<td><img src="images/music7.png" alt="" width="170px" height="170px"></td>
+								<td><img src="images/music8.png" alt="" width="170px" height="170px"></td>
 							</tr>
 						</table>
 					</a>

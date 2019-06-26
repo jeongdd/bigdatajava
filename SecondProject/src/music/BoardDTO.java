@@ -6,6 +6,8 @@ public class BoardDTO {
 	private String id;
 	private String content;
 	private String date;
+	
+	
 	public int getNum() {
 		return num;
 	}

@@ -6,7 +6,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>SignIn</title>
 		<link rel="stylesheet" type="text/css" href="stylelogin.css" />
 		<link rel="stylesheet"
 			href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -23,7 +23,7 @@
 				$("#insert").click(function() {
 					var d = jQuery("#check").serialize();
 					$.ajax({
-						url : "insert.jsp",
+						url : "insertMember.jsp",
 						data : d,
 						dataType : "text",
 						success : function(result) {
@@ -61,20 +61,27 @@
 					var pw1 = $("#pw1").val();
 					var pw2 = $("#pw2").val();
 					if (pw1 != "" || pw2 != "") {
-						if (pw1 == pw2) {
-							$("#alert-check").hide();
-							$("#alert-success").show();
-							$("#alert-danger").hide();
-							$("#submit").removeAttr("disabled");
-						} else if (pw1.length < 6 || pw1 == "" || pw1 != pw2) {
+						if (pw1.length < 6 || pw1 == "") {
 							$("#alert-check").show();
 							$("#alert-success").hide();
 							$("#alert-danger").show();
 							$("#submit").attr("disabled", "disabled");
-						}
+						} else {
+							if(pw1 != pw2){
+							$("#alert-check").hide();
+							$("#alert-success").hide();
+							$("#alert-danger").show();
+							$("#submit").attr("disabled", "disabled");
+						} else if (pw1 == pw2) {
+							$("#alert-check").hide();
+							$("#alert-success").show();
+							$("#alert-danger").hide();
+							$("#submit").removeAttr("disabled");
 					}
-				});
+						}
+				}
 			});
+		});
 		</script>
 	
 		<style>
@@ -123,7 +130,7 @@
 							<input type="password" id="pw2" class="form-control input-lg"
 								placeholder="패스워드 재입력" onblur="" /> <br>
 							<div class="alert alert-warning" id="alert-check">비밀번호를 6자이상 써주세요.</div>
-							<div class="alert alert-success" id="alert-success">비밀번호가	일치합니다.</div>
+							<div class="alert alert-success" id="alert-success">비밀번호가 일치합니다.</div>
 							<div class="alert alert-danger" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
 							<br>
 							<input type="text" name="name" class="form-control input-lg" placeholder="이름" 
