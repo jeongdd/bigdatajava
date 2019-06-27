@@ -25,6 +25,7 @@
 						dataType : "text",
 						success : function(result) {
 							alert("게시글이 등록되었습니다.");
+							location.href = 'boardList.jsp';
 						}
 					});
 					return false;

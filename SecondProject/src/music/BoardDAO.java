@@ -3,6 +3,7 @@ package music;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.apache.catalina.Session;
@@ -22,7 +23,7 @@ public class BoardDAO {
 
 		con = mgr.getConnection();
 		System.out.println(1);
-		String sql = "insert into board values(null,?,?,?,?)";
+		String sql = "insert into board values(null,?,?,?,?,?)";
 		ps = con.prepareStatement(sql);
 		System.out.println(dto.getId());
 
@@ -30,6 +31,7 @@ public class BoardDAO {
 		ps.setString(2, dto.getId());
 		ps.setString(3, dto.getContent());
 		ps.setString(4, dto.getDate());
+		ps.setInt(5, dto.getCount());
 
 		ps.executeUpdate();
 		System.out.println(3);
@@ -49,6 +51,71 @@ public class BoardDAO {
 		ps.executeUpdate();
 	}
 
+	public BoardDTO readCnt(int num) {
+		
+		updateCnt(num);
+		
+		String sql = "select * from board where num = ?";
+		BoardDTO dto = new BoardDTO();
+		try {
+			con = mgr.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, num);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				dto.setNum(rs.getInt("num"));
+				dto.setTitle(rs.getString("title"));
+				dto.setId(rs.getString("id"));
+				dto.setContent(rs.getString("content"));
+				dto.setDate(rs.getString("date"));
+				dto.setCount(rs.getInt("count"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
+	}
+	
+	public void updateCnt(int num) {
+	
+		try {
+			con = mgr.getConnection();
+			
+			String sql = "update board set count = count+1 where num = ?";
+			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, num);
+			
+			ps.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
 	public void delete(BoardDTO dto) throws Exception {
 
 		con = mgr.getConnection();
@@ -83,7 +150,7 @@ public class BoardDAO {
 		}
 		return dto2;
 	}
-
+	
 	public ArrayList<BoardDTO> selectAll() {
 
 		ArrayList<BoardDTO> list = new ArrayList<BoardDTO>();
@@ -105,12 +172,14 @@ public class BoardDAO {
 				String id = rs.getString(3);
 				String content = rs.getString(4);
 				String date = rs.getString(5);
+				int count = rs.getInt(6);
 
 				dto.setNum(num);
 				dto.setTitle(title);
 				dto.setId(id);
 				dto.setContent(content);
 				dto.setDate(date);
+				dto.setCount(count);
 
 				list.add(dto);
 				

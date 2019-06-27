@@ -74,7 +74,7 @@
 							
 							<%}else{%>
 							<form action="login.jsp">
-								<button type="submit" id = "loginbutton" class="btn btn-info">로그인</button>
+								<button type="submit" id = "loginbutton" class="btn btn-outline-info">로그인</button>
 							</form>
 							<%} %>
 						</td>

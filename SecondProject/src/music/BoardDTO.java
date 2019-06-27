@@ -6,6 +6,7 @@ public class BoardDTO {
 	private String id;
 	private String content;
 	private String date;
+	private int count;
 	
 	
 	public int getNum() {
@@ -37,6 +38,12 @@ public class BoardDTO {
 	}
 	public void setDate(String date) {
 		this.date = date;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	

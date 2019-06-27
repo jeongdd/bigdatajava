@@ -17,9 +17,10 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <body>
 	<div id="top">
-		<div id = "title">
-			<a href="main.jsp"><img src="images/Title.png" style="border-radius: 10px 10px 10px 10px"></a>
-		</div>
+		<div id="title">
+        	 <a href="main.jsp"><img src="images/Title.png"
+            	style="border-radius: 10px 10px 10px 10px"></a>
+      	</div>
 
 	<div id="contain">
 		<div id="di1">
@@ -42,7 +43,6 @@
 		</form>
 			</center>
 			</div>
-	</div>
 	</div>
 </body>
 </head>

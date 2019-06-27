@@ -42,16 +42,7 @@
 			dto.setId(id);
 			dto.setContent(content);
 			dto.setDate(date);
-			
 		
-			/* out.print(num);
-			out.print(title);
-			
-			out.print(id);
-			out.print(content);
-			out.print(date); */
-			
-			
 			
 			dao.insert(dto);
 		%>
