@@ -6,14 +6,20 @@
 		<meta charset="UTF-8">
 		<title>board</title>
 		<link rel="stylesheet" type="text/css" href="boardstyle.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
+			integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
+				//목록 버튼 이벤트
 				$("#btnList").click(function(){
 					location.href = 'boardList.jsp';
 				});
 			});
+			
 		</script>
+		
 	</head>
 	
 	<body>
@@ -26,26 +32,126 @@
 			dto = dao.readCnt(num);
 		%>
 		
-		
-		<article>
-			<div class="container" role="main">
-				<h2>board Content</h2>
-				<div class="bg-white rounded shadow-sm">
-					<div class="board_title"><c:out value="${dto.getTitle()}"/></div>
-					<div class="board_info_box">
-						<span class="board_author"><c:out value="${dto.getId()}"/>,</span>
-						<span class="board_date"><c:out value="${dto.getDate()}"/></span>
-					</div>
-					<div class="board_content">${dto.getContent()}</div>
-					
-				</div>
-				<div style="margin-top : 20px">
-					<button type="button" class="btn btn-sm btn-primary" id="btnUpdate">수정</button>
-					<button type="button" class="btn btn-sm btn-primary" id="btnDelete">삭제</button>
-					<button type="button" class="btn btn-sm btn-primary" id="btnList">목록</button>
-				</div>
+		<body>
+			<div id="top">
+				<div id="title">
+		        	 <a href="main.jsp"><img src="images/Title.png"
+		            	style="border-radius: 10px 10px 10px 10px"></a>
+	      		</div>
+			<div id = "search">
+            <form action="search.jsp">
+               <input type="text" id = "searchbox" style = "width: 400px; height: 45px;" placeholder="검색어를 입력해주세요." name="search">
+               <button type="submit" class="btn btn-primary btn-lg">검색</button>
+            </form>
+         </div>
+
+
+			<div id = "login">
+				<table>
+					<tr>
+						<td>
+							<img src = "images/Camel.png">
+						</td>
+						<td width="150px">
+							<%
+								String userId = (String)session.getAttribute("InputId");
+								if(userId != null){
+							%>
+							<b><%=session.getAttribute("InputId") %></b>님<br>안녕하세요 :)
+							
+							<form action="logout.jsp">
+								<button type="submit" id="logout" class="btn btn-dark">로그아웃</button>
+							</form>
+							
+							<%}else{%>
+							<form action="login.jsp">
+								<button type="submit" id = "loginbutton" class="btn btn-info">로그인</button>
+							</form>
+							<%} %>
+						</td>
+					</tr>
+				</table>
 			</div>
-		</article>
+	</div>
+			<div id = "menu">
+			<table>
+				<ul>
+					<li class = "menuselect"><a href = "">음원차트</a>
+					<li class = "menuselect"><a href = "newmusic.jsp">최신음악</a>
+					<li class = "menuselect"><a href = "MagazineSearch.jsp">뉴스토픽</a>
+					<li class = "menuselect"><a href = "">시각화</a>
+					<li class = "menuselect"><a href = "boardList.jsp">공지사항</a>
+				</ul>
+			</table>
+		</div>
+	<hr class="hr">
+		<center>
+			<article>
+				<div class="table-responsive">
+				<div class="container">
+				<table class="table table-striped table-sm"> 
+
+				<legend>
+					<h4>
+						<b>공지사항</b>
+					</h4>
+				</legend>
+			</div>
+			<table class="table table-striped table-sm">
+				<colgroup>
+					<col style="width:10%;" />
+					<col style="width:auto;" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th class="sub1">NO.<%= dto.getNum() %> </th>
+						<th class="sub2"><%= dto.getTitle() %></th>
+					</tr>
+					<tr>
+						<th class="sub1">작성일</th>
+						<th class="sub2"><%= dto.getDate() %></th>
+					</tr>
+					<tr>
+						<th class="sub1">작성자</th>
+						<th class="sub2"><%= dto.getId() %></th>
+					</tr>
+					<tr>
+						<th class="sub1">조회수</th>
+						<th align="left" style="color: red"><%= dto.getCount()%></th>
+					</tr>
+					<tr>
+						<th class="sub1">글 내용</th>
+						<th></th>
+					</tr>
+					<table>
+						<tr>
+							<th><%=  dto.getContent() %></th>
+						</tr>
+					</table>
+				</thead>
+				</table>
+			</article>
+		</center>
+		<br><br>
+			<div id="btn1">
+			<input type="hidden" value="기본값" id="aaaa">
+			<%
+				if(userId.equals("admin")){
+			%>
+			<div>
+				<button type="button" id="btnUp" class="btn btn-primary btn-sm" onclick="modify()">수정</button>
+				<button type="button" id="btnDel" class="btn btn-primary btn-sm" onclick="noticeDelete()">삭제</button>
+				<button type="button" id="btnList" class="btn btn-primary btn-sm">목록</button>
+			</div>
+			<% } else { %>
+			<div>
+				<button type="button" id="btnList" class="btn btn-primary btn-sm">목록</button>
+			</div>
+			<% } %>		
+					
+					
+						
+		</div>
 	</body>
 
 </html>

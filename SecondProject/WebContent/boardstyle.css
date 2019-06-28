@@ -31,9 +31,13 @@ body {
 	margin : 10pt;
 }
 
-.board_tag {
-	font-size : 11pt;
-	margin : 10pt;
-	padding-bottom : 10pt;
+.sub1{
+	align-content: center;
+}
+.sub2{
+	align-content: left;
 }
 
+#btn1{
+	margin-left: 1350px;
+}

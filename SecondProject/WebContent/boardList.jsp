@@ -12,10 +12,6 @@
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" 
 			integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-		<script
-			src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-			crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script type="text/javascript">
 					$(function() {
@@ -29,7 +25,7 @@
 						});
 						
 						$("#write").click(function(){
-							location.href= 'adminwrite.jsp';
+							location.href= 'write.jsp';
 						});
 						
 						
@@ -84,7 +80,7 @@
 					<li class="menuselect"><a href="">음원차트</a>
 					<li class="menuselect"><a href="newmusic.jsp">최신음악</a>
 					<li class="menuselect"><a href="">뉴스토픽</a>
-					<li class="menuselect"><a href="">에디터추천</a>
+					<li class="menuselect"><a href="">시각화</a>
 					<li class="menuselect"><a href="boardList.jsp">공지사항</a>
 				</ul>
 			</table>
@@ -156,8 +152,9 @@
 		</table>
 		<br>
 		</center>
+			<% if(userId.equals("admin")){ %>
 			<button style="margin-left: 1400px" type="submit" id="write" class="btn btn-outline-primary">글쓰기</button>
-	
+			<% } %>
 	
 	</body>
 

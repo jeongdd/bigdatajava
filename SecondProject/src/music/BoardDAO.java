@@ -120,9 +120,9 @@ public class BoardDAO {
 
 		con = mgr.getConnection();
 
-		String sql = "delete from board where id = ?";
+		String sql = "delete from board where count = ?";
 		ps = con.prepareStatement(sql);
-		ps.setString(1, dto.getId());
+		ps.setInt(1, dto.getCount());
 
 		ps.executeUpdate();
 	}
