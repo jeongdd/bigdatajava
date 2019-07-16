@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- <bean id="sport1" class="com.itbank.mvc08.SportCar">
+	<constructor-arg ref="strong"></constructor-arg>
+	<constructor-arg value="빨강"></constructor-arg>
+	<constructor-arg value="300"></constructor-arg>
+</bean> -->
+<bean id="auto" class="com.itbank.mvc08.AutoWindow"></bean>
+<bean id="strong" class="com.itbank.mvc08.StrongWindow"></bean>
+
+
+<bean id="sky" class="com.itbank.mvc08.SkyDoor"></bean>
+<bean id="general" class="com.itbank.mvc08.GeneralDoor"></bean>
+
+
+
+<bean id="sport" class="com.itbank.mvc08.SportCar">
+	<property name="window" ref="auto"></property>
+	<property name="color" value="빨강"></property>
+	<property name="speed" value="200"></property>
+	<property name="door" ref="sky"></property>
+	
+</bean>
+
+<bean id="super" class="com.itbank.mvc08.SuperCar">
+	<property name="window" ref="strong"></property>
+	<property name="color" value="초록"></property>
+	<property name="speed" value="300"></property>
+	<property name="door" ref="general"></property>
+</bean>
+
+
+
+
+
+
+</beans>
