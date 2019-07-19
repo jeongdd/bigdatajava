@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mDAO">
+
+	<select id="select" parameterType="mDTO" resultMap="rsMap">
+		SELECT * FROM member
+		WHERE id = #{id}
+	</select>
+
+	<resultMap type="mDTO" id="rsMap">
+		<result property="id" column="id" />
+		<result property="pw" column="pq" />
+		<result property="name" column="name" />
+		<result property="age" column="age" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="rsMap">
+		SELECT * FROM member
+	</select>
+
+	<insert id="insert" parameterType="mDTO">
+		INSERT INTO member VALUES(#{id},#{pw},#{name},#{age})  <!-- get메소드 -->
+	</insert>
+
+	<update id="update" parameterType="mDTO">
+		UPDATE member
+		SET
+		age=#{age}
+		WHERE
+		id = #{id}
+	</update>
+
+	<delete id="delete" parameterType="mDTO">
+		DELETE FROM member WHERE
+		id = #{id}
+	</delete>
+
+</mapper>

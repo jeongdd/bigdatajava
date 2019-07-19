@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.itbank.mvc99.BbsDTO" alias="bDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc99.MemberDTO" alias="mDTO"></typeAlias>
+		<typeAlias type="com.itbank.mvc99.ReplyDTO" alias="cDTO"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="mapper/BbsMapper.xml" />
+		<mapper resource="mapper/MemberMapper.xml" />
+		<mapper resource="mapper/ReplyMapper.xml"/>
+	</mappers>
+</configuration>
