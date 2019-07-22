@@ -12,10 +12,17 @@ public class ReplyselectController {
 	@Autowired
 	ReplyDAO dao;
 
+	@Autowired
+	BbsDAO dao2;
+	
+	
 	@RequestMapping("selectAllR")
 	public String selectAll(Model model) {
-		List<ReplyDTO> list = dao.selectAll();
-		model.addAttribute("list", list);
-		return "selectAllR";
+		
+		List<ReplyDTO> list2 = dao.selectAll();
+		List<BbsDTO> list11 = dao2.selectAll();
+		model.addAttribute("list11", list11);
+		model.addAttribute("list2", list2);
+		return "selectAll";
 	}
 }

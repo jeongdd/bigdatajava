@@ -11,8 +11,7 @@ public class ReplyInsertController {
 	ReplyDAO dao;
 	
 	@RequestMapping("insertR")
-	public String name(ReplyDTO replyDTO) {
+	public void name(ReplyDTO replyDTO) {
 		dao.insert(replyDTO);
-		return "insertR";
 	}
 }

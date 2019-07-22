@@ -20,7 +20,7 @@
 			<button type="submit">검색</button>
 		</form>
 		<hr size="5" color="salmon">
-		<a href="selectAll">전체 리스트 검색</a>
+		<a href="selectAllR">전체 리스트 검색</a>
 		
 	</body>
 </html>
