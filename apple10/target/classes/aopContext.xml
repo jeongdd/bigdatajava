@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+<!-- 태그 : Element(요소) -->
+<!-- Empty Element (빈 요소) -->
+<context:component-scan base-package="com.itbank.mvc10"/>  <!-- annotation 인식을 위해  꼭 있어야함 -->
+<bean id="aspect" class="com.itbank.mvc10.AspectClass"></bean>
+
+<aop:config>
+	<!-- 포인트가 될 (핵심)메소드를 검색하는 태그 -->
+	<aop:pointcut expression="execution(* com.itbank.mvc10.ASite.person*(..))" id="person"/>
+	<aop:pointcut expression="execution(* com.itbank.mvc10.CSite.Info*(..))" id="info"/>
+	<aop:pointcut expression="execution(* com.itbank.mvc10.CSite.V*(..)))" id="view"/>
+	<aop:pointcut expression="execution(* com.itbank.mvc10.BSite.o*(..))" id="order"/>
+	<aop:pointcut expression="execution(* com.itbank.mvc10.BSiteImpl.productF*(..))" id="find"/>
+	<aop:pointcut expression="execution(* com.itbank.mvc10.BSiteImpl.ba*(..))" id="basket"/>
+	<aop:pointcut expression="execution(* com.itbank.mvc10.BSiteImpl.productO*(..))" id="pOrder"/>
+	
+	<aop:aspect ref="aspect">
+		<aop:before method="login" pointcut-ref="person"/>
+		<aop:after method="logout" pointcut-ref="person"/>
+		<aop:before method="login2" pointcut-ref="info"/>
+		<aop:after method="logout" pointcut-ref="view"/>
+		<aop:before method="login3" pointcut-ref="order"/>
+		<aop:after method="logout" pointcut-ref="order"/>
+		<aop:after-returning method="returnCall" pointcut-ref="find" returning="returnObj"/>
+		<aop:after-throwing method="errorCall" pointcut-ref="basket"/>
+		<aop:around method="aroundCall" pointcut-ref="pOrder"/>
+	</aop:aspect>
+</aop:config>
+
+</beans>
